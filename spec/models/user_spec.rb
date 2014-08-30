@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe User do
 	before do 
-		@user = User.new(name:"hina", email:"hb@hina.com", 
+		@user = User.new(name:"UserTest", email:"TestUser@testDomain.com", 
 			password: "foobar", password_confirmation: "foobar")
 	end
 
@@ -51,7 +51,7 @@ describe User do
 		end		
 	end
 
-	describe "when email is duplicate" do
+	describe " ---------> when email is duplicate" do
 		before do
 			user_with_same_email = @user.dup
 			user_with_same_email.email = @user.email.upcase
@@ -61,7 +61,7 @@ describe User do
 	end
 	
 	#passwords
-	describe "when password is not present" do
+	describe " ---------> when password is not present" do
 	before do
 		@user = User.new(name: "Example User", email: "user@example.com",
 			password: " ", password_confirmation: " ")
@@ -69,9 +69,8 @@ describe User do
 		it {should_not be_valid}
 	end
 
-	describe "when password is not matching" do
+	describe " ---------> when password is not matching" do
 		before { @user.password_confirmation = "mismatch" }
 		it {should_not be_valid}
 	end
-
 end
